@@ -23,10 +23,6 @@ The bypass relies on the combination of three legitimate Windows behaviors:
 
 > **Note:** Because `%windir%` is a prefix, the payload must be placed in a directory structured exactly like: `<payload_dir>\system32\cleanmgr.exe`.
 
-## Requirements
-- Windows 10 21H2 (Build 19044) or later.
-- MSVC (`cl.exe`) via Developer Command Prompt.
-- UAC enabled (below "Always Notify" level).
 
 ## Usage
 
