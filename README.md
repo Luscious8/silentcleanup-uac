@@ -24,6 +24,4 @@ The bypass relies on the combination of three legitimate Windows behaviors:
 
 <img width="800" height="450" alt="2026-10-23 14-01-41" src="https://github.com/user-attachments/assets/d08e3067-df4a-462b-b2f8-7c98b6dfdc98" />
 
-<img width="800" height="450" alt="Image" src="https://github.com/user-attachments/assets/62723894-edc6-4835-9ca1-e835e99ad451" />
-
 scious.
