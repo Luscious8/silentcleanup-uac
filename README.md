@@ -24,57 +24,6 @@ The bypass relies on the combination of three legitimate Windows behaviors:
 
 <img width="800" height="450" alt="2026-10-23 14-01-41" src="https://github.com/user-attachments/assets/d08e3067-df4a-462b-b2f8-7c98b6dfdc98" />
 
-## Usage
+<img width="800" height="450" alt="Image" src="https://github.com/user-attachments/assets/62723894-edc6-4835-9ca1-e835e99ad451" />
 
-**1. Build the binary:**
-```cmd
-cl /nologo /W4 /DUNICODE /D_UNICODE method34.c
-2. Stage the payload:
-Create the directory structure and copy your payload as cleanmgr.exe.
-
-cmd
-mkdir C:\Users\Public\p\system32
-copy /Y C:\Windows\System32\cmd.exe C:\Users\Public\p\system32\cleanmgr.exe
-3. Execute:
-
-cmd
-method34.exe C:\Users\Public\p
-(If no argument is provided, it defaults to C:\Users\Public\p)
-
-Upstream Bugs Fixed
-This repository is not just a port; it fixes four critical defects found in the upstream reference code (UACME/Akagi) that caused intermittent failures and broken execution:
-
-Broken quoteFix on 21H2+:
-The upstream code appends a stray trailing quote (C:\Users\Public\p"), causing ERROR_FILE_NOT_FOUND. This version writes the value with no quotes (meaning the payload path must not contain spaces).
-
-Race Condition (Async Trigger):
-The upstream code clears WINDIR immediately after calling RunEx, causing the task to frequently resolve the original path. This version introduces a Sleep(3000) to ensure the task captures the hijacked variable.
-
-Payload Validation:
-The upstream default expects a file, but %windir% acts as a prefix. This version validates that the provided payload directory actually contains system32\cleanmgr.exe.
-
-Task Termination:
-The upstream code calls IRunningTask_Stop() immediately, which kills long-running payloads. This version releases the IRunningTask interface without stopping the process.
-
-Limitations
-Standard Users: HighestAvailable means "highest the user can get." If the account is not in the Administrators group, there is no elevated token to reuse. It will prompt for credentials.
-
-No Spaces: The payload path must not contain spaces (due to the unquoted WINDIR fix).
-
-15-Minute Timeout: The SilentCleanup task is hardcoded to terminate after 15 minutes. Long-running payloads will be killed.
-
-Always Notify: If UAC is set to "Always Notify" (ConsentPromptBehaviorAdmin = 2), this bypass fails.
-
-Detection Notes
-Uses a legitimate, Microsoft-signed scheduled task.
-
-Native C, no .NET metadata (avoids Wacatac.B!ml heuristics).
-
-Different code path than standard fodhelper/cmstp bypasses, effectively evading specific AV signatures (e.g., McAfee's Trojan:Win/UACBypass.CMSTP).
-
-Credits
-Original concept: UACME by hfiref0x (Method 34).
-
-Original standalone port: Akagi.
-
-Bug analysis, hardening, and verification: Luscious.
+scious.
