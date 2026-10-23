@@ -1,4 +1,3 @@
-<img width="800" height="450" alt="2026-10-23 14-01-41" src="https://github.com/user-attachments/assets/d72afca0-9c50-4355-ad39-d4583fd9a083" />
 # SilentCleanup UAC Bypass (Method 34)
 
 A standalone, native C implementation of UACME's Method 34 (DiskCleanup Environment Variable). This tool hijacks the user's `%windir%` environment variable and triggers a built-in Windows scheduled task to execute an arbitrary payload at **High integrity without a UAC consent prompt**.
